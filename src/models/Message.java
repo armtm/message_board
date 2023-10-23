@@ -7,9 +7,21 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
 import javax.persistence.Table;
 
 @Entity
+
+// “一覧表示するデータを取得するためのJPQL” を追記
+//➤クラスのimportも忘れずに（import javax.persistence.NamedQueries; と import javax.persistence.NamedQuery;）
+@NamedQueries({
+    @NamedQuery(
+            name = "getAllMessages",
+            query = "SELECT m FROM Message AS m ORDER BY m.id DESC"
+        )
+    })
+
 @Table(name = "messages")
 public class Message {
     @Id
