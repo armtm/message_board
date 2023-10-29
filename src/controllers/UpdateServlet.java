@@ -56,6 +56,8 @@ public class UpdateServlet extends HttpServlet {
             //データベースを更新
             em.getTransaction().begin();
             em.getTransaction().commit();
+            //フラッシュメッセージを追記
+            request.getSession().setAttribute("flush", "更新が完了しました。");
             em.close();
 
             //セッションスコープ上の、不要になったデータ(更新前のデータ？)を削除
